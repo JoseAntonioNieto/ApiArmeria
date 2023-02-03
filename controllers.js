@@ -1,6 +1,6 @@
-import { Cliente, Arma, Compra} from "./models";
+// import { Cliente } from "./models.js";
 
-exports.readClientes = (req, res) => {
+readClientes = (req, res) => {
     Cliente.find(
         {},
         (err, data) => {
@@ -12,3 +12,5 @@ exports.readClientes = (req, res) => {
         }
     );
 };
+
+// export default readClientes;

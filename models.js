@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const Cliente = mongoose.model("Cliente", 
+export const Cliente = mongoose.model("Cliente", 
     new mongoose.Schema({
         nombre: String,
         apellido1: String,
