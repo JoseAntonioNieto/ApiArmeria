@@ -1,4 +1,4 @@
-// import { Cliente } from "./models.js";
+import { Cliente } from "./models.js";
 
 readClientes = (req, res) => {
     Cliente.find(
@@ -13,4 +13,4 @@ readClientes = (req, res) => {
     );
 };
 
-// export default readClientes;
+export default readClientes;
