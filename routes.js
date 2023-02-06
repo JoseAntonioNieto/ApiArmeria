@@ -29,4 +29,14 @@ router.post("/armeria/clientes", cors(), (req, res) => {
     });
 })
 
+router.delete("/armeria/clientes/:id", cors(), (req, res) => {
+    Cliente.findOneAndRemove({ _id: req.params.id }, (err, data) => {
+        if (err) {
+            res.json({ error: err });
+        } else {
+            res.json(data);
+        }
+    });
+} )
+
 export default router;
