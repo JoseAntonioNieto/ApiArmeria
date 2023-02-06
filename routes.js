@@ -39,4 +39,17 @@ router.delete("/armeria/clientes/:id", cors(), (req, res) => {
     });
 } )
 
+router.get("/armeria/clientes/:id", cors(), (req, res) => {
+    Cliente.find(
+        { _id: req.params.id },
+        (err, data) => {
+            if (err) {
+                res.json({ error: err});
+            } else {
+                res.json(data);
+            }
+        }
+    );
+})
+
 export default router;
