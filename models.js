@@ -8,12 +8,12 @@ export const Cliente = mongoose.model("Cliente",
     })
 );
 
-const Arma = mongoose.model("Arma", 
+export const Arma = mongoose.model("Arma", 
     new mongoose.Schema({
         nombre: String,
         balasCargador: Number,
         tipo: String,
-        cantidad: Number
+        stock: Number
     })
 );
 
