@@ -1,69 +1,17 @@
 import cors from "cors";
 import express from "express";
-// import controller from "./controllers.js";
-import { Cliente } from "./models.js";
+import { readClientes, readCliente, deletClientes, readById, updateCliente } from "./controllers.js"
 
 const router = express.Router();
 
-router.get("/armeria/clientes", cors(), (req, res) => {
-    Cliente.find(
-        {},
-        (err, data) => {
-            if (err) {
-                res.json({ error: err});
-            } else {
-                res.json(data);
-            }
-        }
-    );
-});
+router.get("/armeria/clientes", cors(), readClientes);
 
-router.post("/armeria/clientes", cors(), (req, res) => {
-    new Cliente({nombre: req.body.nombre, apellido1: req.body.apellido1, apellido2: req.body.apellido2})
-    .save((err, data) => {
-        if (err) {
-            res.json({ error: err});
-        } else {
-            res.json(data);
-        }
-    });
-})
+router.post("/armeria/clientes", cors(), readCliente);
 
-router.delete("/armeria/clientes/:id", cors(), (req, res) => {
-    Cliente.findOneAndRemove({ _id: req.params.id }, (err, data) => {
-        if (err) {
-            res.json({ error: err });
-        } else {
-            res.json(data);
-        }
-    });
-} )
+router.delete("/armeria/clientes/:id", cors(), deletClientes)
 
-router.get("/armeria/clientes/:id", cors(), (req, res) => {
-    Cliente.find(
-        { _id: req.params.id },
-        (err, data) => {
-            if (err) {
-                res.json({ error: err});
-            } else {
-                res.json(data);
-            }
-        }
-    );
-})
+router.get("/armeria/clientes/:id", cors(), readById)
 
-router.put("/armeria/clientes/:id", cors(), (req, res) => {
-    Cliente.findByIdAndUpdate(
-        { _id: req.params.id },
-        { $set: { nombre: req.body.nombre, apellido1: req.body.apellido1, apellido2: req.body.apellido2 } },
-        (err, data) => {
-            if (err) {
-                res.json({ error: err });
-            } else {
-                res.json(data);
-            }
-        }
-    );
-})
+router.put("/armeria/clientes/:id", cors(), updateCliente)
 
 export default router;
