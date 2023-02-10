@@ -57,6 +57,7 @@ mongoose.connect(DB_URI)
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("static"));
 app.use("/api", apiRoutes);
 
 app.listen(PORT, () => console.log("Servidor iniciado."));
